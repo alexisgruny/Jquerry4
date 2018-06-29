@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <script src="jquery-3.2.1.js"></script>
+  <title>Exercice 5</title>
+</head>
+<body>
+  <form>
+    <ol style="list-style-type : none">
+    <li><label>Nom : </label><input type="text" name="text" id="nom"/></li>
+    <li><label>Prénom : </label><input type="text" name="text" id="prenom"/></li>
+    <li><label>date de naissance :</label><input type="text" name="text" id="dateNaissance"/></li>
+    <li><label>lieu de naissance :</label><input type="text" name="text" id="lieuNaissance"/></li>
+    <li><label>emploi :</label><input type="text" name="text" id="emploi"/></li>
+    <li><label>société :</label><input type="text" name="text" id="societe" /></li>
+    <li><input type="button" name="button" id="generation" value="Generer" /></li>
+  </ol>
+  </form>
+  <div id="error" style="color:red"></div>
+  <script>
+  $('#nom').focusout(function(){
+    var nomReg = /^[a-zA-Zàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšž -]+$/;
+    var nom= $('#nom').val();
+    if(Nom == '') {
+      $('#error').text('Le champs est vide.');
+    } else if(!nomReg.test(nom)) {
+      $('#error').text('Votre nom n\'est pas valide !');
+    } else {
+      $('#error').text('');
+    }
+  });
+  $('#prenom').focusout(function(){
+    var prenomReg = /^[a-zA-Zàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšž -]+$/;
+    var prenom = $('#prenom').val();
+    if(prenom == '') {
+      $('#error').text('Le champs est vide.');
+    } else if(!prenomReg.test(prenom)) {
+      $('#error').text('Votre prénom n\'est pas valide !');
+    } else {
+      $('#error').text('');
+    }
+  });
+  $('#dateNaissance').focusout(function(){
+    var dateReg = /^[0-3][0-9][/][0-1][0-9][/][12][09][0-9][0-9]$/;
+    var date = $('#dateNaissance').val();
+    if(date == '') {
+      $('#error').text('Le champs est vide.');
+    } else if(!dateReg.test(date)) {
+      $('#error').text('Votre date n\'est pas valide !');
+    } else {
+      $('#error').text('');
+    }
+  });
+  $('#lieuNaissance').focusout(function(){
+    var lieuReg = /^[a-zA-Zàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšž -]+$/;
+    var lieu = $('#lieuNaissance').val();
+    if(lieu == '') {
+      $('#error').text('Le champs est vide.');
+    } else if(!lieuReg.test(lieu)) {
+      $('#error').text('Votre lieu n\'est pas valide !');
+    } else {
+      $('#error').text('');
+    }
+  });
+  $('#emploi').focusout(function(){
+    var emploiReg = /^[a-zA-Zàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšž -]+$/;
+    var emploi = $('#emploi').val();
+    if(emploi == '') {
+      $('#error').text('Le champs est vide.');
+    } else if(!emploiReg.test(emploi)) {
+      $('#error').text('Votre emploi n\'est pas valide !');
+    } else {
+      $('#error').text('');
+    }
+  });
+  $('#societe').focusout(function(){
+    var societeReg = /^[0-9a-zA-Zàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšž -]+$/;
+    var societe = $('#societe').val();
+    if(societe == '') {
+      $('#error').text('Le champs est vide.');
+    } else if(!societeReg.test(societe)) {
+      $('#error').text('Votre société n\'est pas valide !');
+    } else {
+      $('#error').text('');
+    }
+  });
+  $('#generation').click( function(){
+  var nom = $('#nom').val();
+  var prenom= $('#prenom').val();
+  var date= $('#dateNaissance').val();
+  var lieu = $('#lieuNaissance').val();
+  var emploi = $('#emploi').val();
+  var societe = $('#societe').val();
+  alert('El famoso ' + nom + ' ' + prenom + ', né le ' + date + ' à ' + lieu + ', actuellement ' + emploi + ' à ' + societe + ' vien ce présente a nous.');
+});
+  </script>
+</body>
+</html>

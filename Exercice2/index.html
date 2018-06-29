@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>bulletin</title>
+</head>
+<body>
+  <script src="jquery-3.2.1.js"></script>
+  <div class="container">
+    <form>
+      <ol>
+        <li><input type="text" name="note1" id="note1" placeholder="note 1"></input></li>
+        <li><input type="text" name="note2" id="note2" placeholder="note 2"></input></li>
+        <li><input type="text" name="note3" id="note3" placeholder="note 3"></input></li>
+        <li><input type="text" name="note4" id="note4" placeholder="note 4"></input></li>
+        <li><input type="text" name="note5" id="note5" placeholder="note 5"></input></li>
+      </ol>
+      <input type="button" name="validate" id="validate" value="validé"></input>
+    </form>
+  </div>
+  <div id="result"></div>
+  <script>
+  $('#validate').click(function(){
+ var note1 = $('#note1').val();
+ var note2 = $('#note2').val();
+ var note3 = $('#note3').val();
+ var note4 = $('#note4').val();
+ var note5 = $('#note5').val();
+ var result = 0;
+ var appreciation = "";
+ $('#validate').click( function(){
+    result = ((parseInt(note1) + parseInt(note2) + parseInt(note3) + parseInt(note4) +parseInt(note5))/5)
+    if(result >= 0 && result < 10){
+        appreciation = "En dessous de la moyenne !";
+    } else if(result >= 10 && result < 13){
+        appreciation = "Moyen !";
+    } else if(result >= 13 && result < 16){
+        appreciation = "Bien !";
+    } else if(result >= 16 && result < 20){
+        appreciation = "Très bien !";
+    } else if(result == 20){
+        appreciation = "Excellent !";
+    } else{
+        alert('Je pense que tu t\'es planté(e)');
+    }
+      affichageMoyenne()
+ });
+ function affichageMoyenne(){
+    $('#result').text(' Ta moyenne est de : ' + result + ' C\'est : ' + appreciation)
+    console.log(result);
+ }
+});
+</script>
+</body>
+</html>

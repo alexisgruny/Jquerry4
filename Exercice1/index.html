@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Shifumi</title>
+</head>
+<body>
+    <div class="container">
+        <span class="left">Player: 0</span>
+        <span class="right">Computer: 0</span>
+        <select id="player">
+            <option value="Pierre">Pierre</option>
+            <option value="Feuille">Feuille</option>
+            <option value="Ciseaux">Ciseaux</option>
+        </select>
+        <input type="button" value="Shifumi !" id="fight"></button>
+    </div>
+    <div id="result"><p></p></div>
+<script src="jquery-3.2.1.js"></script>
+<script>
+$(function() {
+// Initialisation des variables
+var computer = "";
+var party = 1;
+var playerScore = 0;
+var computerScore = 0;
+$result = $('#result');
+
+// IA choix aleatoire
+function computerChoice() {
+  var randomNumber = Math.floor(Math.random()*3 + 1)
+  if (randomNumber == 1) {
+    computer = "Pierre";
+  }
+  else if (randomNumber == 2) {
+    computer = "Feuille";
+  }
+  else {
+    computer = "Ciseaux";
+  }
+}
+
+// choix du joueur
+function playerChoice() {
+  $player = $('#player').val();
+}
+
+// Comparaison + incrementation des scores
+function compare(ia, player) {
+  if ((ia == "Pierre" && $player == "Ciseaux") || (ia == "Feuille" && $player == "Pierre") || (ia == "Ciseaux" && $player == "Feuille")) {
+    $result = "tu as perdu !";
+    computerScore++;
+  }
+  else if (ia == player) {
+    $result = "c'est un match nul !";
+  }
+  else {
+    $result = "tu as gagné !";
+    playerScore++;
+  }
+}
+
+// clic le bouton pour jouer (appel toutes les fonctions)
+$('#fight').click(function() {
+  computerChoice();
+  playerChoice();
+  compare(computer, player);
+  showText();
+  $(this).queue(function(next) {
+      next();
+  });
+});
+
+// Affichage des résultats
+function showText() {
+  $('.left').text("Player: " + playerScore);
+  $('.right').text("Computer: " + computerScore);
+  $('#result').html("L'IA a joué <b>" + computer + "</b>, " + $result);
+  $('#fight').effect( "bounce", "slow" );
+  party++;
+  $('#fight').html("Jouer la manche " + party);
+}
+});
+</script>
+</body>
+</html>

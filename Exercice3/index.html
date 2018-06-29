@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <script src="jquery-3.2.1.js"></script>
+  <title>Exercice 5</title>
+</head>
+<body>
+  <form>
+    <ol>
+    <li style="list-style-type : none" ><label>Nom : </label><input type="text" name="input" id="nom"/></li>
+    <li style="list-style-type : none" ><label>Prénom : </label><input type="text" name="input" id="prenom"/></li>
+    <li style="list-style-type : none" ><label>Adresse mail : </label><input type="text" name="input" id="mail"/></li>
+    <li style="list-style-type : none" ><label>Numéro de téléphone : </label><input type="text" name="input" id="phone"/></li>
+  </ol>
+  </form>
+  <div id="error" style="color:red"></div>
+  <script>
+  $(function(){
+    $('#nom').focusout(function(){
+      var lastnameReg = /^[a-zA-Zàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšž -]+$/;
+      var lastname = $('#nom').val();
+      if(surname == '') {
+        $('#error').text('Le champs est vide.');
+      } else if(!surnameReg.test(surname)) {
+        $('#error').text('Votre nom n\'est pas valide !');
+      } else {
+        $('#error').text('');
+      }
+    });
+    $('#prenom').focusout(function(){
+      var nameReg = /^[a-zA-Zàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšž -]+$/;
+      var name = $('#prenom').val();
+      if(name == '') {
+        $('#error').text('Le champs est vide.');
+      } else if(!nameReg.test(name)) {
+        $('#error').text('Votre prénom n\'est pas valide !');
+      } else {
+        $('#error').text('');
+      }
+    });
+    $('#phone').focusout(function(){
+      var phoneReg = /^(?:(?:\+|00)33[\s.-]{0,3}(?:\(0\)[\s.-]{0,3})?|0)[1-9](?:(?:[\s.-]?\d{2}){4}|\d{2}(?:[\s.-]?\d{3}){2})$/;
+      var phoneNumber= $('#phone').val();
+      if(phoneNumber == '') {
+        $('#error').text('Le champs est vide.');
+      } else if(!phoneReg.test(phoneNumber)) {
+        $('#error').text('Votre numéro de téléphone n\'est pas valide !');
+      } else {
+        $('#error').text('');
+      }
+    });
+    $('#mail').focusout(function(){
+      var emailReg = /^([\w-\.]+@[\w-]+\.+[\w-]{2})?$/;
+      var email = $('#mail').val();
+      if(email == '') {
+        $('#error').text('Le champs est vide.');
+      } else if(!emailReg.test(email)) {
+        $('#error').text('Ce n\'est pas une adresse email');
+      } else {
+        $('#error').text('');
+      }
+    });
+  });
+  </script>
+</body>
+</html>
